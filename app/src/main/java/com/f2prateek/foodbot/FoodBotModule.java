@@ -7,7 +7,7 @@ import com.squareup.otto.Bus;
 /**
  * Module for setting up custom bindings in RoboGuice.
  */
-public class BootstrapModule extends AbstractModule {
+public class FoodBotModule extends AbstractModule {
 
     @Override
     protected void configure() {

@@ -2,6 +2,57 @@
 
 <resources>
 
+    <!-- Text Styles -->
+    <style name="TextAppearance" parent="@android:style/TextAppearance"></style>
+
+    <!-- log -->
+    <style name="TextAppearance.Calories">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/holo_purple</item>
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:padding">@dimen/padding_calories</item>
+    </style>
+
+    <style name="TextAppearance.Description">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/holo_red_light</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:padding">@dimen/padding_description</item>
+    </style>
+
+    <style name="TextAppearance.Timestamp">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@color/holo_green_light</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:paddingRight">@dimen/padding_right_timestamp</item>
+    </style>
+
+    <!-- stats -->
+    <style name="TextAppearance.Header">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/holo_red_dark</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- EditText Styles -->
+    <style name="EditTextAppearance" parent="@android:style/Widget.EditText"></style>
+
+    <style name="EditTextAppearance.Optional">
+        <item name="android:textColor">@color/holo_red_light</item>
+    </style>
+
+    <style name="EditTextAppearance.Mandatory">
+        <item name="android:textColor">@color/holo_blue_dark</item>
+    </style>
+
+    <!-- Bootstrap -->
+
     <style name="SignInEditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

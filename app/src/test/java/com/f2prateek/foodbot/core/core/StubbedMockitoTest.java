@@ -25,7 +25,7 @@ public class StubbedMockitoTest {
     private OutputStream outputStream;
 
     /**
-     * Set up default mocks
+     * Set up default mocks.
      *
      * @throws IOException
      */
@@ -40,7 +40,7 @@ public class StubbedMockitoTest {
      * @throws IOException
      */
     @Test
-    public void getStubbedTest() throws IOException {
+    public void stubbedTest() throws IOException {
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
         outputStreamWriter.close();
         verify(outputStream).close();

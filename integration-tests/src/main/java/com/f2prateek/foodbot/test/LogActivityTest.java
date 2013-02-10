@@ -4,19 +4,19 @@ package com.f2prateek.foodbot.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.f2prateek.foodbot.ui.CarouselActivity;
+import com.f2prateek.foodbot.ui.LogActivity;
 
 
 /**
  * Test displaying of carousel.
  */
-public class CarouselTest extends ActivityInstrumentationTestCase2<CarouselActivity> {
+public class LogActivityTest extends ActivityInstrumentationTestCase2<LogActivity> {
 
     /**
-     * Create test for {@link CarouselActivity}
+     * Create test for {@link LogActivity}
      */
-    public CarouselTest() {
-        super(CarouselActivity.class);
+    public LogActivityTest() {
+        super(LogActivity.class);
     }
 
     /**

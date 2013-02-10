@@ -19,13 +19,8 @@
             android:name=".FoodBotApplication"
             android:icon="@drawable/icon"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Bootstrap.Dark"
+            android:theme="@style/AppTheme"
             android:debuggable="true">
-
-        <activity
-                android:name=".ui.CarouselActivity"
-                android:configChanges="orientation|keyboardHidden|screenSize" android:label="@string/app_name">
-        </activity>
 
         <activity
                 android:name=".ui.LogActivity"
@@ -39,37 +34,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.BootstrapTimerActivity"
-                  android:configChanges="orientation|keyboardHidden|screenSize" android:label="@string/app_name"
-                  android:launchMode="singleTop"/>
-
-        <service android:name=".core.TimerService" android:enabled="true" android:exported="false"/>
-
-        <service
-                android:name=".authenticator.AccountAuthenticatorService"
-                android:process=":auth">
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator"/>
-            </intent-filter>
-
-            <meta-data
-                    android:name="android.accounts.AccountAuthenticator"
-                    android:resource="@xml/authenticator"/>
-        </service>
-
-        <activity
-                android:name=".authenticator.BootstrapAuthenticatorActivity"
-                android:excludeFromRecents="true">
-
-            <!--
-                No intent-filter here! This activity is only ever launched by
-                someone who explicitly knows the class name
-            -->
-        </activity>
-
-        <activity android:name=".ui.NewsActivity"/>
-        <activity android:name=".ui.UserActivity" android:label="@string/app_name"/>
-
         <activity android:name=".ui.EntryDetailActivity" android:label="@string/app_name"/>
         <activity android:name=".ui.StatsActivity" android:label="@string/app_name"/>
 
@@ -77,8 +41,6 @@
                 android:name=".provider.FoodBotContentProvider"
                 android:authorities="com.f2prateek.foodbot.provider">
         </provider>
-
-
     </application>
 
 </manifest>

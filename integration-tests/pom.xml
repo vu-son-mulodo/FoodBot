@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>com-f2prateek-foodbot-integration-tests</artifactId>
-    <name>Android-Bootstrap integration tests</name>
+    <name>FoodBot integration tests</name>
     <packaging>apk</packaging>
 
     <parent>

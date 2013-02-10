@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/f2prateek/FoodBot.png?branch=master)](https://travis-ci.org/f2prateek/FoodBot)
 
-This repository contains the source code for the [FoodBot](http://www.androidbootstrap.com/)
+This repository contains the source code for the [FoodBot](http://www.github.com/f2prateek/FoodBot)
 Android app available from [Google Play](https://play.google.com/store/apps/details?id=com.f2prateek.foodbot).
 
 Please see the [issues](https://github.com.f2prateek.foodbot/issues) section

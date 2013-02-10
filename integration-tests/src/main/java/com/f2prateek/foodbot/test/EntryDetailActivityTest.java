@@ -1,17 +1,12 @@
-
-
 package com.f2prateek.foodbot.test;
 
-import static com.f2prateek.foodbot.core.Constants.Extra.NEWS_ITEM;
-import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.f2prateek.foodbot.core.News;
 import com.f2prateek.foodbot.ui.EntryDetailActivity;
 
 
 /**
- * Tests for displaying a specific {@link News} item
+ * Tests for displaying a specific {@link EntryDetailActivity} item
  */
 public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<EntryDetailActivity> {
 
@@ -23,7 +18,7 @@ public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<En
     }
 
     /**
-     * Configure intent used to display a {@link News}
+     * Configure intent used to display a {@link EntryDetailActivity}
      */
     @Override
     protected void setUp() throws Exception {

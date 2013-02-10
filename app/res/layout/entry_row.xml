@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_label_calories"
+        style="@style/TextAppearance.Calories"
+        android:layout_width="@dimen/calorie_textview_width"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:enabled="false"
+        android:text="305.192323214212" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_label_description"
+        style="@style/TextAppearance.Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_label_calories"
+        android:text="Pulled pork burrito " >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_label_timestamp"
+        style="@style/TextAppearance.Timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_label_calories"
+        android:layout_alignParentRight="true"
+        android:text="just now" >
+    </TextView>
+
+</RelativeLayout>

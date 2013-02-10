@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/entry_edit_calories"
+            style="@style/EditTextAppearance.Mandatory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:hint="@string/entry_edit_calories"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal" >
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/entry_iv_equal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_equal" >
+        </ImageButton>
+
+        <EditText
+            android:id="@+id/entry_edit_calories_per_serving"
+            style="@style/EditTextAppearance.Optional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/entry_edit_calories_per_serving"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal" >
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/entry_edit_servings"
+            style="@style/EditTextAppearance.Optional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/entry_edit_servings"
+            android:imeOptions="actionNext"
+            android:inputType="number" >
+        </EditText>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/entry_edit_description"
+        style="@style/EditTextAppearance.Mandatory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/entry_edit_description"
+        android:imeOptions="actionNext" >
+    </EditText>
+
+    <com.squareup.timessquare.CalendarPickerView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

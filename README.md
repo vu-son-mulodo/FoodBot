@@ -58,6 +58,7 @@ consistent, great looking header across all Android platforms,
   POJO's for use in the app.
   * [Android-Times-Square](https://github.com/square/android-times-square)
   * [Otto](https://github.com/square/otto)
+  * [AndroidBootstrap](http://www.androidbootstrap.com/)
   * [Crouton](https://github.com/keyboardsurfer/Crouton) for context sensitie notfications
   * [Travis-CI](https://travis-ci.org/f2prateek/FoodBot) for continous integration
 

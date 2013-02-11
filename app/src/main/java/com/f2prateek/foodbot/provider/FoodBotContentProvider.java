@@ -55,11 +55,11 @@ public class FoodBotContentProvider extends ContentProvider {
         sURIMatcher.addURI(AUTHORITY, BASE_PATH, LOG_ENTRY);
         sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/#", LOG_ENTRY_ID);
     }
-    private FoodBotDatabaseHelper database;
+    private FoodBotDatabaseHelper mDatabase;
 
     @Override
     public boolean onCreate() {
-        database = new FoodBotDatabaseHelper(getContext());
+        mDatabase = new FoodBotDatabaseHelper(getContext());
         return false;
     }
 
@@ -88,7 +88,7 @@ public class FoodBotContentProvider extends ContentProvider {
                 throw new IllegalArgumentException("Unknown URI: " + uri);
         }
 
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = mDatabase.getWritableDatabase();
         Cursor cursor = queryBuilder.query(db, projection, selection,
                 selectionArgs, null, null, sortOrder);
         // Make sure that potential listeners are getting notified
@@ -105,7 +105,7 @@ public class FoodBotContentProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         int uriType = sURIMatcher.match(uri);
-        SQLiteDatabase sqlDB = database.getWritableDatabase();
+        SQLiteDatabase sqlDB = mDatabase.getWritableDatabase();
         long id = 0;
         switch (uriType) {
             case LOG_ENTRY:
@@ -121,7 +121,7 @@ public class FoodBotContentProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         int uriType = sURIMatcher.match(uri);
-        SQLiteDatabase sqlDB = database.getWritableDatabase();
+        SQLiteDatabase sqlDB = mDatabase.getWritableDatabase();
         int rowsDeleted = 0;
         switch (uriType) {
             case LOG_ENTRY:
@@ -151,7 +151,7 @@ public class FoodBotContentProvider extends ContentProvider {
     public int update(Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
         int uriType = sURIMatcher.match(uri);
-        SQLiteDatabase sqlDB = database.getWritableDatabase();
+        SQLiteDatabase sqlDB = mDatabase.getWritableDatabase();
         int rowsUpdated = 0;
         switch (uriType) {
             case LOG_ENTRY:

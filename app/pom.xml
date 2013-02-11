@@ -26,11 +26,6 @@
             <version>${android.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.rtyley</groupId>
             <artifactId>roboguice-sherlock</artifactId>
             <version>1.5</version>
@@ -54,11 +49,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.kevinsawicki</groupId>
-            <artifactId>http-request</artifactId>
-            <version>3.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.viewpagerindicator</groupId>
             <artifactId>library</artifactId>
             <version>2.4.1</version>
@@ -76,15 +66,9 @@
             <type>apklib</type>
         </dependency>
         <dependency>
-            <groupId>com.github.kevinsawicki</groupId>
-            <artifactId>android-pusher</artifactId>
-            <version>0.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.kevinsawicki</groupId>
-            <artifactId>wishlist</artifactId>
-            <version>0.8</version>
-            <type>apklib</type>
+            <groupId>com.squareup</groupId>
+            <artifactId>tape</artifactId>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup</groupId>

@@ -2,23 +2,23 @@ package com.f2prateek.foodbot.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.f2prateek.foodbot.ui.EntryDetailActivity;
+import com.f2prateek.foodbot.ui.MainActivity;
 
 
 /**
- * Tests for displaying a specific {@link EntryDetailActivity} item
+ * Tests for displaying a specific {@link MainActivity} item
  */
-public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<EntryDetailActivity> {
+public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     /**
-     * Create test for {@link EntryDetailActivity}
+     * Create test for {@link MainActivity}
      */
-    public EntryDetailActivityTest() {
-        super(EntryDetailActivity.class);
+    public MainActivityTest() {
+        super(MainActivity.class);
     }
 
     /**
-     * Configure intent used to display a {@link EntryDetailActivity}
+     * Configure intent used to display a {@link MainActivity}
      */
     @Override
     protected void setUp() throws Exception {

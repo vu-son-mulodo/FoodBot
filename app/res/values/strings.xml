@@ -4,7 +4,7 @@
 
     <string name="app_name">FoodBot</string>
 
-    <!-- Log Activity -->
+    <!-- LogFragment -->
     <string name="add_entry">Add Entry</string>
     <string name="no_entries">No entries!</string>
     <string name="delete_entry">Delete Entry</string>
@@ -15,7 +15,7 @@
     <string name="entry_not_edited">Entry not edited!</string>
     <string name="show_stats">Stats</string>
 
-    <!-- EntryDetailActivity -->
+    <!-- EntryDetailFragment -->
     <string name="invalid_entry">Invalid Entry</string>
     <string name="entry_edit_description">Description</string>
     <string name="entry_edit_calories">Calories</string>

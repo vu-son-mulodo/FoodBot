@@ -17,7 +17,7 @@
             android:debuggable="true">
 
         <activity
-                android:name=".ui.LogActivity"
+                android:name=".ui.MainActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -28,13 +28,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.EntryDetailActivity" android:label="@string/app_name"/>
-        <activity android:name=".ui.StatsActivity" android:label="@string/app_name"/>
-
-        <provider
-                android:name=".provider.FoodBotContentProvider"
-                android:authorities="com.f2prateek.foodbot.provider">
-        </provider>
     </application>
 
 </manifest>

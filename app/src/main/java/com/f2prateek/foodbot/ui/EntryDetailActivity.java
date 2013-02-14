@@ -79,7 +79,7 @@ public class EntryDetailActivity extends BaseActivity {
      * TODO : discard part
      */
     private void inflateDoneDiscardBar() {
-        LayoutInflater inflater = (LayoutInflater) getActionBar().getThemedContext()
+        LayoutInflater inflater = (LayoutInflater) getSupportActionBar().getThemedContext()
                 .getSystemService(LAYOUT_INFLATER_SERVICE);
         final View customActionBarView = inflater.inflate(
                 R.layout.actionbar_custom_view_done_discard, null);

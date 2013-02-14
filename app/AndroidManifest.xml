@@ -28,6 +28,17 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.EntryDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" android:label="@string/app_name">
+        </activity>
+
+        <provider
+                android:authorities="com.f2prateek.foodbot.model"
+                android:name=".model.FoodBotContentProvider"
+                android:exported="false">
+        </provider>
+
     </application>
 
 </manifest>

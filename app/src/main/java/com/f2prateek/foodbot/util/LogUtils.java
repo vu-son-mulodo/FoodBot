@@ -20,33 +20,33 @@ package com.f2prateek.foodbot.util;
 // copied from https://code.google.com/p/iosched/source/browse/android/src/com/google/android/apps/iosched/util/LogUtils.java
 public class LogUtils {
 
-	private static final String LOG_PREFIX = "foodbot_";
+    private static final String LOG_PREFIX = "foodbot_";
 
-	private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
+    private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
 
-	private static final int MAX_LOG_TAG_LENGTH = 23;
+    private static final int MAX_LOG_TAG_LENGTH = 23;
 
-	// usage example
-	private static final String LOGTAG = makeLogTag(LogUtils.class);
+    // usage example
+    private static final String LOGTAG = makeLogTag(LogUtils.class);
 
-	/**
-	 * Make a LOGTAG for this class.
-	 * 
-	 * @param cls
-	 * @return
-	 */
-	public static String makeLogTag(Class cls) {
-		return makeLogTag(cls.getSimpleName());
-	}
+    /**
+     * Make a LOGTAG for this class.
+     *
+     * @param cls
+     * @return
+     */
+    public static String makeLogTag(Class cls) {
+        return makeLogTag(cls.getSimpleName());
+    }
 
-	public static String makeLogTag(String str) {
-		if (str.length() > MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH) {
-			return LOG_PREFIX
-					+ str.substring(0, MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH
-							- 1);
-		}
+    public static String makeLogTag(String str) {
+        if (str.length() > MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH) {
+            return LOG_PREFIX
+                    + str.substring(0, MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH
+                    - 1);
+        }
 
-		return LOG_PREFIX + str;
-	}
+        return LOG_PREFIX + str;
+    }
 
 }

@@ -15,7 +15,7 @@
     <string name="entry_not_edited">Entry not edited!</string>
     <string name="show_stats">Stats</string>
 
-    <!-- EntryDetailFragment -->
+    <!-- Entry Detail Activity -->
     <string name="invalid_entry">Invalid Entry</string>
     <string name="entry_edit_description">Description</string>
     <string name="entry_edit_calories">Calories</string>

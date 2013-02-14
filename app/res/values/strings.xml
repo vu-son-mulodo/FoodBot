@@ -30,6 +30,10 @@
     <string name="entry_edited">Entry edited</string>
     <string name="entry_not_edited">Entry not edited!</string>
     <string name="show_stats">Stats</string>
+    <string name="fragment_log_title">Log</string>
+
+    <!-- StatsFragment -->
+    <string name="fragment_stats_title">Stats</string>
 
     <!-- Entry Detail Activity -->
     <string name="invalid_entry">Invalid Entry</string>

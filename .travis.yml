@@ -32,4 +32,4 @@ before_install:
 before_script:
   - ./wait_for_emulator
 
-script: mvn clean verify
+script: mvn install -Pintegration-tests -Dandroid.device=test

@@ -3,6 +3,7 @@ package com.f2prateek.foodbot.test;
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.f2prateek.foodbot.ui.MainActivity;
+import com.squareup.spoon.Spoon;
 
 
 /**
@@ -18,19 +19,10 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     }
 
     /**
-     * Configure intent used to display a {@link MainActivity}
-     */
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-        // Intent intent = new Intent();
-        // setActivityIntent(intent);
-    }
-
-    /**
      * Verify activity exists
      */
-    public void testActivityExists() {
+    public void testMainActivityExists() {
+        Spoon.screenshot(getActivity(), "initial_state");
         assertNotNull(getActivity());
     }
 }

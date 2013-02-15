@@ -152,7 +152,7 @@ public class EntryDetailActivity extends BaseActivity {
 
         if (cursor != null) {
             cursor.moveToFirst();
-            fillView(LogEntry.cursorToEntry(cursor));
+            fillView(new LogEntry(cursor));
             cursor.close();
         }
     }
@@ -191,9 +191,7 @@ public class EntryDetailActivity extends BaseActivity {
 
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        outState.putParcelable(FoodBotContentProvider.CONTENT_ITEM_TYPE,
-                mUri);
+        outState.putParcelable(FoodBotContentProvider.CONTENT_ITEM_TYPE, mUri);
     }
 
     /**
@@ -210,17 +208,15 @@ public class EntryDetailActivity extends BaseActivity {
         float calories = Float.parseFloat(mCaloriesText.getText().toString());
         long date = mDatePicker.getSelectedDate().getTime();
 
-        ContentValues values = LogEntry.entryToCV(new LogEntry(description, calories, date));
-
-        Log.d(LOGTAG, values.toString());
+        LogEntry entry = new LogEntry(description, calories, date);
 
         if (mUri == null) {
             // New
             mUri = getContentResolver().insert(
-                    FoodBotContentProvider.CONTENT_URI, values);
+                    FoodBotContentProvider.CONTENT_URI, entry.toContentValues());
         } else {
             // Update
-            getContentResolver().update(mUri, values, null, null);
+            getContentResolver().update(mUri, entry.toContentValues(), null, null);
         }
 
         return true;

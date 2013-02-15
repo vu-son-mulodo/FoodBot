@@ -26,8 +26,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.f2prateek.foodbot.R;
 
-import static com.f2prateek.foodbot.model.LogEntry.cursorToEntry;
-
 /**
  * A custom {@link CursorAdapter} that generates the view form a {@link Cursor}.
  */
@@ -47,7 +45,7 @@ public class LogAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        LogEntry entry = cursorToEntry(cursor);
+        LogEntry entry = new LogEntry(cursor);
 
         TextView calories = (TextView) view.findViewById(R.id.tv_label_calories);
         TextView description = (TextView) view.findViewById(R.id.tv_label_description);

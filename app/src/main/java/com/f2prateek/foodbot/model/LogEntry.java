@@ -33,9 +33,6 @@ public class LogEntry {
     private long date;
     private int _id;
 
-    public LogEntry() {
-    }
-
     public LogEntry(String description, float calories, long date, int id) {
         this.description = description;
         this.calories = calories;
@@ -44,29 +41,24 @@ public class LogEntry {
     }
 
     public LogEntry(String description, float calories, long date) {
-        this.description = description;
-        this.calories = calories;
-        this.date = date;
-        _id = -1; // no id yet
-    }
-
-    // Convenience method, that converts a {@link LogEntry} to {@link ContentValues}
-    public static ContentValues entryToCV(LogEntry entry) {
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_DESCRIPTION, entry.getDescription());
-        values.put(COLUMN_CALORIES, entry.getCalories());
-        values.put(COLUMN_DATE, entry.getDate());
-        return values;
+        this(description, calories, date, -1);
     }
 
     // Convenience method, that converts a {@link Cursor} to {@link LogEntry}
-    public static LogEntry cursorToEntry(Cursor cursor) {
-        String description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPTION));
-        long date = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_DATE));
-        int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
-        float calories = cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_CALORIES));
+    public LogEntry(Cursor cursor) {
+        this.description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPTION));
+        this.date = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_DATE));
+        this._id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
+        this.calories = cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_CALORIES));
+    }
 
-        return new LogEntry(description, calories, date, id);
+    // Convenience method, that converts a {@link LogEntry} to {@link ContentValues}
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DESCRIPTION, getDescription());
+        values.put(COLUMN_CALORIES, getCalories());
+        values.put(COLUMN_DATE, getDate());
+        return values;
     }
 
     public String getDescription() {

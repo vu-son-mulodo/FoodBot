@@ -187,6 +187,7 @@ public class EntryDetailActivity extends BaseActivity {
         Date nextMonth = nCal.getTime();
 
         mDatePicker.init(curDate, previousMonth, nextMonth);
+        mDatePicker.smoothScrollToPosition(1);
     }
 
     protected void onSaveInstanceState(Bundle outState) {

@@ -22,7 +22,6 @@ import android.view.View;
 import android.widget.EditText;
 import com.f2prateek.foodbot.R;
 import com.f2prateek.foodbot.ui.EntryDetailActivity;
-import com.f2prateek.foodbot.ui.MainActivity;
 import com.squareup.spoon.Spoon;
 import com.squareup.timessquare.CalendarPickerView;
 
@@ -51,8 +50,8 @@ public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<En
         instrumentation = getInstrumentation();
         activity = getActivity();
 
-        description = (EditText) activity.findViewById(R.id.entry_edit_calories);
-        calories = (EditText) activity.findViewById(R.id.entry_edit_description);
+        description = (EditText) activity.findViewById(R.id.entry_edit_description);
+        calories = (EditText) activity.findViewById(R.id.entry_edit_calories);
         picker = (CalendarPickerView) activity.findViewById(R.id.calendar_view);
         done = activity.findViewById(R.id.actionbar_done);
     }

@@ -40,17 +40,15 @@ import static com.f2prateek.foodbot.util.LogUtils.makeLogTag;
 
 public class EntryDetailActivity extends BaseActivity {
 
+    private static final String LOGTAG = makeLogTag(EntryDetailActivity.class);
     @Inject
     DatabaseController dbController;
-
-    private static final String LOGTAG = makeLogTag(EntryDetailActivity.class);
     @InjectView(R.id.entry_edit_description)
     EditText mDescriptionText;
     @InjectView(R.id.entry_edit_calories)
     EditText mCaloriesText;
     @InjectView(R.id.calendar_view)
     CalendarPickerView mDatePicker;
-
     //Uri of the entry being edited, null if this activity is being used ot create a new entry
     Uri mUri;
 
@@ -113,33 +111,6 @@ public class EntryDetailActivity extends BaseActivity {
         actionBar.setCustomView(customActionBarView, new ActionBar.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
-    }
-
-    /**
-     * Checks to see if user has entered fields correctly.
-     *
-     * @return true if entry was successfully validated
-     */
-    private boolean validateEntry() {
-        if (TextUtils.isEmpty(mCaloriesText.getText().toString())) {
-            mCaloriesText.setError(getString(R.string.invalid_entry_empty));
-            return false;
-        }
-
-        if (TextUtils.isEmpty(mDescriptionText.getText().toString())) {
-            mDescriptionText.setError(getString(R.string.invalid_entry_empty));
-            return false;
-        }
-
-        // might not be required since, input type is explicity set to
-        // numberDecimal - asserting to be sure
-        try {
-            Float.parseFloat(mCaloriesText.getText().toString());
-        } catch (NumberFormatException e) {
-            mCaloriesText.setError(getString(R.string.invalid_entry_number));
-            return false;
-        }
-        return true;
     }
 
     /**
@@ -216,6 +187,37 @@ public class EntryDetailActivity extends BaseActivity {
 
         return true;
 
+    }
+
+    /**
+     * Checks to see if user has entered fields correctly.
+     *
+     * @return true if entry was successfully validated
+     */
+    private boolean validateEntry() {
+        //Allows us to set multiple errors
+        boolean result = true;
+
+        if (TextUtils.isEmpty(mCaloriesText.getText().toString())) {
+            mCaloriesText.setError(getString(R.string.invalid_entry_empty));
+            result = false;
+        } else {
+            // might not be required since, input type is explicity set to
+            // numberDecimal - asserting to be sure
+            try {
+                Float.parseFloat(mCaloriesText.getText().toString());
+            } catch (NumberFormatException e) {
+                mCaloriesText.setError(getString(R.string.invalid_entry_number));
+                result = false;
+            }
+        }
+
+        if (TextUtils.isEmpty(mDescriptionText.getText().toString())) {
+            mDescriptionText.setError(getString(R.string.invalid_entry_empty));
+            result = false;
+        }
+
+        return result;
     }
 
     /**

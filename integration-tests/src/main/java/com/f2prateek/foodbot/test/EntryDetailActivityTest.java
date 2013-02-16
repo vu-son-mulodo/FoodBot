@@ -16,9 +16,17 @@
 
 package com.f2prateek.foodbot.test;
 
+import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
+import android.widget.EditText;
+import com.f2prateek.foodbot.R;
 import com.f2prateek.foodbot.ui.EntryDetailActivity;
+import com.f2prateek.foodbot.ui.MainActivity;
 import com.squareup.spoon.Spoon;
+import com.squareup.timessquare.CalendarPickerView;
+
+import static org.fest.assertions.api.ANDROID.assertThat;
 
 
 /**
@@ -26,28 +34,159 @@ import com.squareup.spoon.Spoon;
  */
 public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<EntryDetailActivity> {
 
-    /**
-     * Create test for {@link com.f2prateek.foodbot.ui.EntryDetailActivity}
-     */
+    private Instrumentation instrumentation;
+    private EntryDetailActivity activity;
+    private EditText description;
+    private EditText calories;
+    private CalendarPickerView picker;
+    private View done;
+
     public EntryDetailActivityTest() {
         super(EntryDetailActivity.class);
     }
 
-    /**
-     * Configure intent used to display a {@link com.f2prateek.foodbot.ui.EntryDetailActivity}
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        // Intent intent = new Intent();
-        // setActivityIntent(intent);
+        instrumentation = getInstrumentation();
+        activity = getActivity();
+
+        description = (EditText) activity.findViewById(R.id.entry_edit_calories);
+        calories = (EditText) activity.findViewById(R.id.entry_edit_description);
+        picker = (CalendarPickerView) activity.findViewById(R.id.calendar_view);
+        done = activity.findViewById(R.id.actionbar_done);
     }
 
     /**
-     * Verify activity exists
+     * Verify failure when entries are incomplete.
      */
-    public void testEntryDetailActivityExists() {
-        Spoon.screenshot(getActivity(), "initial_state_entry");
-        assertNotNull(getActivity());
+    public void testEmptyEntry() {
+        Spoon.screenshot(getActivity(), "initial_state");
+
+        // Make sure the initial state does not show any errors.
+        assertThat(description).hasNoError();
+        assertThat(calories).hasNoError();
+
+        // Click the "done" button.
+        instrumentation.runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                done.performClick();
+            }
+        });
+        instrumentation.waitForIdleSync();
+
+        Spoon.screenshot(activity, "empty_form_error");
+        assertThat(description).hasError(R.string.invalid_entry_empty);
+        assertThat(calories).hasError(R.string.invalid_entry_empty);
     }
+
+
+
+    /**
+     * Verify failure when only calories are incomplete
+     */
+    public void testEntryEmptyCalories() {
+        Spoon.screenshot(getActivity(), "initial_state");
+
+        // Make sure the initial state does not show any errors.
+        assertThat(calories).hasNoError();
+        assertThat(description).hasNoError();
+
+        // Click the "login" button.
+        instrumentation.runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                description.setText("test_description");
+            }
+        });
+        instrumentation.waitForIdleSync();
+
+        Spoon.screenshot(activity, "set_description");
+
+        // Click the "done" button.
+        instrumentation.runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                done.performClick();
+            }
+        });
+        instrumentation.waitForIdleSync();
+
+        Spoon.screenshot(activity, "empty_form_error");
+        assertThat(description).hasNoError();
+        assertThat(calories).hasError(R.string.invalid_entry_empty);
+    }
+
+    /**
+     * Verify failure when only description is incomplete
+     */
+    public void testEntryEmptyDescription() {
+        Spoon.screenshot(getActivity(), "initial_state");
+
+        // Make sure the initial state does not show any errors.
+        assertThat(calories).hasNoError();
+        assertThat(description).hasNoError();
+
+        // Click the "login" button.
+        instrumentation.runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                calories.setText("23.54");
+            }
+        });
+        instrumentation.waitForIdleSync();
+
+        Spoon.screenshot(activity, "set_calories");
+
+        // Click the "done" button.
+        instrumentation.runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                done.performClick();
+            }
+        });
+        instrumentation.waitForIdleSync();
+
+        Spoon.screenshot(activity, "empty_form_error");
+        assertThat(calories).hasNoError();
+        assertThat(description).hasError(R.string.invalid_entry_empty);
+    }
+
+    /**
+     * Verify failure on incorrect calories
+     */
+    public void testInvalidCalories() {
+        Spoon.screenshot(getActivity(), "initial_state");
+
+        // Make sure the initial state does not show any errors.
+        assertThat(calories).hasNoError();
+        assertThat(description).hasNoError();
+
+        // Click the "login" button.
+        instrumentation.runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                calories.setText("not a float!");
+                description.setText("test");
+            }
+        });
+        instrumentation.waitForIdleSync();
+
+        Spoon.screenshot(activity, "set_data");
+
+        // Click the "done" button.
+        instrumentation.runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                done.performClick();
+            }
+        });
+        instrumentation.waitForIdleSync();
+
+        Spoon.screenshot(activity, "invalid_form_error");
+        assertThat(calories).hasError(R.string.invalid_entry_number);
+        assertThat(description).hasNoError();
+    }
+
 }

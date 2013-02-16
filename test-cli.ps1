@@ -1,0 +1,1 @@
+java -jar spoon-runner-1.0.0-jar-with-dependencies.jar --apk app/target/com-f2prateek-foodbot.apk --test-apk integration-tests/target/com-f2prateek-foodbot-integration-tests.apk --output target

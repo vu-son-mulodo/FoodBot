@@ -16,6 +16,7 @@
 
 package com.f2prateek.foodbot;
 
+import com.f2prateek.foodbot.model.DatabaseController;
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.squareup.otto.Bus;
@@ -31,6 +32,7 @@ public class FoodBotModule extends AbstractModule {
         // We want Otto to be bound as a singleton as one instance only needs
         // to be present in this app
         bind(Bus.class).in(Singleton.class);
+        bind(DatabaseController.class).in(Singleton.class);
 
     }
 

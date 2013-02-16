@@ -16,12 +16,9 @@
 
 package com.f2prateek.foodbot.ui;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,18 +26,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.actionbarsherlock.app.ActionBar;
 import com.f2prateek.foodbot.R;
+import com.f2prateek.foodbot.model.DatabaseController;
 import com.f2prateek.foodbot.model.FoodBotContentProvider;
-import com.f2prateek.foodbot.model.FoodBotTable;
 import com.f2prateek.foodbot.model.LogEntry;
 import com.squareup.timessquare.CalendarPickerView;
 import roboguice.inject.InjectView;
 
+import javax.inject.Inject;
 import java.util.Calendar;
 import java.util.Date;
 
 import static com.f2prateek.foodbot.util.LogUtils.makeLogTag;
 
 public class EntryDetailActivity extends BaseActivity {
+
+    @Inject
+    DatabaseController dbController;
 
     private static final String LOGTAG = makeLogTag(EntryDetailActivity.class);
     @InjectView(R.id.entry_edit_description)
@@ -49,6 +50,8 @@ public class EntryDetailActivity extends BaseActivity {
     EditText mCaloriesText;
     @InjectView(R.id.calendar_view)
     CalendarPickerView mDatePicker;
+
+    //Uri of the entry being edited, null if this activity is being used ot create a new entry
     Uri mUri;
 
     @Override
@@ -77,7 +80,6 @@ public class EntryDetailActivity extends BaseActivity {
     /**
      * Inflate a "Done/Discard" custom action bar view. Copied from
      * https://code.google.com/p/romannurik-code/source/browse/misc/donediscard
-     * TODO : discard part
      */
     private void inflateDoneDiscardBar() {
         LayoutInflater inflater = (LayoutInflater) getSupportActionBar().getThemedContext()
@@ -98,7 +100,7 @@ public class EntryDetailActivity extends BaseActivity {
                     @Override
                     public void onClick(View v) {
                         // "Discard"
-                        finish(); // TODO: don't just finish()!
+                        finish();
                     }
                 });
 
@@ -142,19 +144,12 @@ public class EntryDetailActivity extends BaseActivity {
 
     /**
      * Fill the view with data from the Uri
+     * Delegates to {@link #fillView(com.f2prateek.foodbot.model.LogEntry entry)}
      *
      * @param uri Data to populate the view
      */
     private void fillView(Uri uri) {
-        String[] projection = FoodBotTable.COLUMNS_ALL;
-        Cursor cursor = getContentResolver().query(uri, projection, null, null,
-                null);
-
-        if (cursor != null) {
-            cursor.moveToFirst();
-            fillView(new LogEntry(cursor));
-            cursor.close();
-        }
+        fillView(dbController.getEntry(uri, this));
     }
 
     /**
@@ -213,11 +208,10 @@ public class EntryDetailActivity extends BaseActivity {
 
         if (mUri == null) {
             // New
-            mUri = getContentResolver().insert(
-                    FoodBotContentProvider.CONTENT_URI, entry.toContentValues());
+            mUri = dbController.insertEntry(entry, this);
         } else {
             // Update
-            getContentResolver().update(mUri, entry.toContentValues(), null, null);
+            dbController.updateEntry(mUri, entry, this);
         }
 
         return true;

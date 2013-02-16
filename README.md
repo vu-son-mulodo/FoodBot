@@ -10,7 +10,8 @@ to report any bugs or feature requests and to see the list of known issues.
 
 ## License
 ```
-Copyright 2013 Prateek Srivastava (2013)
+Copyright 2013 Prateek Srivastava (@f2prateek)
+Copyright 2012 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

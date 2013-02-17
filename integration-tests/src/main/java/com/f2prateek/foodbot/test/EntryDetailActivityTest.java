@@ -16,8 +16,6 @@
 
 package com.f2prateek.foodbot.test;
 
-import android.app.Instrumentation;
-import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.EditText;
 import com.f2prateek.foodbot.R;
@@ -31,10 +29,8 @@ import static org.fest.assertions.api.ANDROID.assertThat;
 /**
  * Tests for displaying a specific {@link com.f2prateek.foodbot.ui.MainActivity} item
  */
-public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<EntryDetailActivity> {
+public class EntryDetailActivityTest extends ActivityTest<EntryDetailActivity> {
 
-    private Instrumentation instrumentation;
-    private EntryDetailActivity activity;
     private EditText description;
     private EditText calories;
     private CalendarPickerView picker;
@@ -47,9 +43,6 @@ public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<En
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        instrumentation = getInstrumentation();
-        activity = getActivity();
-
         description = (EditText) activity.findViewById(R.id.entry_edit_description);
         calories = (EditText) activity.findViewById(R.id.entry_edit_calories);
         picker = (CalendarPickerView) activity.findViewById(R.id.calendar_view);
@@ -79,8 +72,6 @@ public class EntryDetailActivityTest extends ActivityInstrumentationTestCase2<En
         assertThat(description).hasError(R.string.invalid_entry_empty);
         assertThat(calories).hasError(R.string.invalid_entry_empty);
     }
-
-
 
     /**
      * Verify failure when only calories are incomplete

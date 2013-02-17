@@ -16,29 +16,41 @@
 
 package com.f2prateek.foodbot.test;
 
-import android.test.ActivityInstrumentationTestCase2;
-
+import android.widget.ListView;
+import com.f2prateek.foodbot.model.DatabaseController;
 import com.f2prateek.foodbot.ui.MainActivity;
 import com.squareup.spoon.Spoon;
 
+import static org.fest.assertions.api.ANDROID.assertThat;
 
 /**
  * Tests for displaying a specific {@link MainActivity} item
  */
-public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+public class MainActivityTest extends ActivityTest<MainActivity> {
 
-    /**
-     * Create test for {@link MainActivity}
-     */
+    DatabaseController dbController;
+    private ListView list;
+
     public MainActivityTest() {
         super(MainActivity.class);
     }
 
-    /**
-     * Verify activity exists
-     */
-    public void testMainActivityExists() {
-        Spoon.screenshot(getActivity(), "initial_state");
-        assertNotNull(getActivity());
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        list = (ListView) activity.findViewById(android.R.id.list);
+        dbController = new DatabaseController();
     }
+
+    /**
+     * Verify activity displays data
+     * TODO : automatically add data
+     */
+    public void testMainActivityNoData() {
+        Spoon.screenshot(activity, "loading");
+        assertThat(list).hasCount(0);
+        Spoon.screenshot(activity, "done");
+    }
+
+
 }

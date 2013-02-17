@@ -30,7 +30,7 @@ public abstract class ActivityTest<T extends Activity> extends
         ActivityInstrumentationTestCase2<T> {
 
     protected Instrumentation instrumentation;
-    protected Activity activity;
+    protected T activity;
 
 
     public ActivityTest(Class<T> activityClass) {
@@ -44,11 +44,4 @@ public abstract class ActivityTest<T extends Activity> extends
         activity = getActivity();
     }
 
-    /**
-     * Verify activity was created successfully
-     */
-    public void testActivityIsCreated() {
-        Spoon.screenshot(activity, "test_creation");
-        assertThat(activity).isNotNull();
-    }
 }

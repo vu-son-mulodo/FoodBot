@@ -30,8 +30,7 @@ public abstract class ActivityTest<T extends Activity> extends
         ActivityInstrumentationTestCase2<T> {
 
     protected Instrumentation instrumentation;
-    protected Activity activity;
-
+    protected T activity;
 
     public ActivityTest(Class<T> activityClass) {
         super(activityClass);

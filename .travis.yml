@@ -2,6 +2,9 @@ language: java
 jdk: oraclejdk7
 notifications:
   email: false
+branches:
+  excludes:
+      - gh-pages
 env:
   matrix:
     # android-16 is always included

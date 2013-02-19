@@ -20,8 +20,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
-import java.util.List;
-
 public class DatabaseController {
 
     public LogEntry getEntry(Uri uri, Context context) {

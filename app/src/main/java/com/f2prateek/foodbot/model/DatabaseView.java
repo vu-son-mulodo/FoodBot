@@ -21,7 +21,7 @@ import android.support.v4.app.LoaderManager;
 
 public interface DatabaseView<M> {
 
-    public void update(M model ,Cursor data);
+    public void update(M model, Cursor data);
 
     // Our views will inherently have this, but need to expose
     // it through the interface

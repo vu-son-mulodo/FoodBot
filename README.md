@@ -12,6 +12,8 @@ to report any bugs or feature requests and to see the list of known issues.
 ```
 Copyright 2013 Prateek Srivastava (@f2prateek)
 Copyright 2012 Google Inc.
+Copyright 2012 Donn Felker
+Copyright 2012 GitHub Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -53,16 +55,10 @@ consistent, great looking header across all Android platforms,
   for driving our app during integration tests.
   * [android-maven-plugin](https://github.com/jayway/maven-android-plugin)
   for automating our build and producing release-ready APKs.
-  * [http-request](https://github.com/kevinsawicki/http-request) for interacting with
-  remote HTTP resources (API's in this case).
-  * [google-gson](http://code.google.com/p/google-gson/) for consuming JSON and hydrating
-  POJO's for use in the app.
   * [Android-Times-Square](https://github.com/square/android-times-square)
   * [Otto](https://github.com/square/otto)
   * [AndroidBootstrap](http://www.androidbootstrap.com/)
-  * [Crouton](https://github.com/keyboardsurfer/Crouton) for context sensitie notfications
   * [Travis-CI](https://travis-ci.org/f2prateek/FoodBot) for continous integration
-
 
 ## Contributing
 

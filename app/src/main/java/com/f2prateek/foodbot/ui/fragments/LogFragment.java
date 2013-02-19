@@ -28,10 +28,9 @@ import android.widget.ListView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.f2prateek.foodbot.FoodBotApplication;
 import com.f2prateek.foodbot.R;
-import com.f2prateek.foodbot.model.FoodBotContentProvider;
-import com.f2prateek.foodbot.model.FoodBotTable;
-import com.f2prateek.foodbot.model.LogAdapter;
+import com.f2prateek.foodbot.model.*;
 import com.f2prateek.foodbot.ui.EntryDetailActivity;
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockListFragment;
 import com.squareup.otto.Bus;
@@ -44,7 +43,7 @@ import static com.f2prateek.foodbot.util.LogUtils.makeLogTag;
  * Fragment that displays a log to the user.
  */
 public class LogFragment extends RoboSherlockListFragment implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        DatabaseView<DatabaseModel> {
 
     private static final String LOGTAG = makeLogTag(LogFragment.class);
     private static final int LOG_LOADER_ID = 1;
@@ -86,7 +85,8 @@ public class LogFragment extends RoboSherlockListFragment implements
         setEmptyText(getSherlockActivity().getResources().getString(R.string.no_entries));
         setListAdapter(mAdapter);
         setListShown(false);
-        getLoaderManager().initLoader(LOG_LOADER_ID, null, this);
+        DatabaseModel dbModel = DatabaseModel.getInstance(getSherlockActivity());
+        dbModel.addView(this, getSherlockActivity());
     }
 
     @Override
@@ -112,21 +112,12 @@ public class LogFragment extends RoboSherlockListFragment implements
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        String[] projection = FoodBotTable.COLUMNS_ALL;
-        CursorLoader cursorLoader = new CursorLoader(getSherlockActivity(),
-                FoodBotContentProvider.CONTENT_URI, projection, null, null, null);
-        return cursorLoader;
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void update(DatabaseModel model, Cursor data) {
         mAdapter.swapCursor(data);
-        setListShown(true);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        mAdapter.swapCursor(null);
+        if (data != null) {
+            setListShown(true);
+        } else {
+            setListShown(false);
+        }
     }
 }

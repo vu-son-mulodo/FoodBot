@@ -51,8 +51,4 @@ public class DatabaseController {
         return context.getContentResolver().update(uri, entry.toContentValues(), null, null);
     }
 
-    public List<LogEntry> getAllEntries() {
-        return null;
-    }
-
 }

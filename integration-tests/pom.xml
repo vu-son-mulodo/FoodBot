@@ -25,7 +25,7 @@
     <packaging>apk</packaging>
 
     <parent>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
         <groupId>com.f2prateek.foodbot</groupId>
         <artifactId>com-f2prateek-foodbot-parent</artifactId>
     </parent>

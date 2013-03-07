@@ -25,8 +25,8 @@
 
     <scm>
         <url>https://github.com.f2prateek.foodbot</url>
-        <connection>scm:git:git://github.com.f2prateek.foodbot.git</connection>
-        <developerConnection>scm:git:git@github.com.f2prateek.foodbot.git</developerConnection>
+        <connection>scm:git:git://github.com:f2prateek/foodbot.git</connection>
+        <developerConnection>scm:git:git@github.com:f2prateek/FoodBot.git</developerConnection>
     </scm>
 
     <developers>
